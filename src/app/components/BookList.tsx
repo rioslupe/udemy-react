@@ -1,13 +1,20 @@
 import BookShow from "@/app/components/BookShow";
+import useBooksContext from "@/app/hooks/use-books-context";
 
 // @ts-ignore
-export default function BookList({books, onDelete, onEdit}) {
+export default function BookList() {
+    const {books} = useBooksContext();
+
     // @ts-ignore
     const renderedBooks = books.map((book) => {
         return (
-            <BookShow onEdit={onEdit} onDelete={onDelete} key={book.id} book={book}/>
+            <BookShow key={book.id} book={book} />
         );
     });
 
-    return <div className="book-list">{renderedBooks}</div>;
+    return (
+        <div className="book-list">
+            {renderedBooks}
+        </div>
+    );
 }

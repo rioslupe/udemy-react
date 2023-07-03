@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import {useState} from 'react';
+import useBooksContext from "@/app/hooks/use-books-context";
 
 // @ts-ignore
-export default function BookCreate({ onCreate }) {
+export default function BookCreate() {
     const [title, setTitle] = useState('');
+    const {createBook} = useBooksContext();
 
     // @ts-ignore
     const handleChange = (event) => {
@@ -12,7 +14,7 @@ export default function BookCreate({ onCreate }) {
     // @ts-ignore
     const handleSubmit = (event) => {
         event.preventDefault();
-        onCreate(title);
+        createBook(title);
         setTitle('');
     };
 
@@ -21,7 +23,7 @@ export default function BookCreate({ onCreate }) {
             <h3>Add a Book</h3>
             <form onSubmit={handleSubmit}>
                 <label>Title</label>
-                <input className="input" value={title} onChange={handleChange} />
+                <input className="input" value={title} onChange={handleChange}/>
                 <button className="button">Create!</button>
             </form>
         </div>
