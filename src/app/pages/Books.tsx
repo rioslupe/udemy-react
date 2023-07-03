@@ -6,10 +6,11 @@ import BookCreate from "@/app/components/BookCreate";
 import useBooksContext from "@/app/hooks/use-books-context";
 
 export default function BooksPage() {
-    const {fetchBooks} = useBooksContext()
+    const {fetchBooks} = useBooksContext();
+
     useEffect(() => {
         fetchBooks();
-    }, []);
+    }, [fetchBooks]);
 
     return (
         <div className="app">
